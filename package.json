@@ -16,7 +16,8 @@
     "multiple",
     "requests"
   ],
-  "author": "Jacek Wilczynski <jacekwilczynski5@gmail.com>",
+  "repository": "jacekwilczynski/async-collect",
+  "author": "Jacek Wilczynski <jacekwilczynski5@gmail.com> (https://github.com/jacekwilczynski)",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",

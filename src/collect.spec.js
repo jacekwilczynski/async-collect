@@ -1,5 +1,5 @@
 import createCollect from './collect';
-
+d
 describe('createCollect', function() {
   const getChunk = () => {};
   const getNextCallsArgs = () => [];
