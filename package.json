@@ -1,0 +1,27 @@
+{
+  "name": "collect",
+  "version": "0.1.0",
+  "description": "Keep asynchronously getting chunks of data as long as the specified condition is met.",
+  "main": "src/collect.js",
+  "scripts": {
+    "test": "jest src/collect.spec.js"
+  },
+  "keywords": [
+    "asynchronous",
+    "chunk",
+    "chunks",
+    "portion",
+    "portions",
+    "request",
+    "multiple",
+    "requests"
+  ],
+  "author": "Jacek Wilczynski <jacekwilczynski5@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^22.4.3"
+  }
+}
