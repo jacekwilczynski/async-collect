@@ -1,6 +1,6 @@
 {
   "name": "async-collect",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Keep asynchronously getting chunks of data as long as a specified condition is met.",
   "main": "src/collect.js",
   "scripts": {
