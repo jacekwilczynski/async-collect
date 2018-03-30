@@ -1,5 +1,5 @@
 import createCollect from './collect';
-d
+
 describe('createCollect', function() {
   const getChunk = () => {};
   const getNextCallsArgs = () => [];
@@ -19,33 +19,37 @@ describe('createCollect', function() {
       expect(collected).toEqual(argsToPass);
     });
 
-    it('should resolve to the same thing as getChunk if getNextCallsArgs returns []', function() {
-      const runTest = async chunk => {
-        const getChunk = async () => chunk;
-        const collect = createCollect({ getChunk, getNextCallsArgs, reduce });
-        const collected = await collect();
-        expect(collected).toBe(chunk);
-      };
-      return Promise.all([
-        runTest('test data'),
-        runTest(['data item 1', 'data item 2', 'data item 3'])
-      ]);
-    });
+    it(
+      'should resolve to the same thing as getChunk if getNextCallsArgs returns []',
+      function() {
+        const runTest = async chunk => {
+          const getChunk = async () => chunk;
+          const collect = createCollect({ getChunk, getNextCallsArgs, reduce });
+          const collected = await collect();
+          expect(collected).toBe(chunk);
+        };
+        return Promise.all([
+          runTest('test data'),
+          runTest(['data item 1', 'data item 2', 'data item 3'])
+        ]);
+      });
 
-    it('should pass its args and the resolved value of getChunk to getNextCallsArgs', async function() {
-      const args = ['a', 'b', 'c'];
-      const getChunk = async (...args) => args.map(arg => arg.toUpperCase());
-      const getNextCallsArgs = jest.fn().mockReturnValueOnce([]);
-      const collect = createCollect({ getChunk, getNextCallsArgs, reduce });
-      await collect(...args);
-      expect(getNextCallsArgs).toHaveBeenCalledTimes(1);
-      expect(getNextCallsArgs).toHaveBeenCalledWith(args, ['A', 'B', 'C']);
-    });
+    it(
+      'should pass its args and the resolved value of getChunk to getNextCallsArgs',
+      async function() {
+        const args = ['a', 'b', 'c'];
+        const getChunk = async (...args) => args.map(arg => arg.toUpperCase());
+        const getNextCallsArgs = jest.fn().mockReturnValueOnce([]);
+        const collect = createCollect({ getChunk, getNextCallsArgs, reduce });
+        await collect(...args);
+        expect(getNextCallsArgs).toHaveBeenCalledTimes(1);
+        expect(getNextCallsArgs).toHaveBeenCalledWith(args, ['A', 'B', 'C']);
+      });
 
     describe('if getNextCallsArgs returns a non-empty array', function() {
       it(
         'should get another chunk for every item in that array and return ' +
-          'combined chunks using reduce',
+        'combined chunks using reduce',
         function() {
           const runTest = async chunks => {
             const getChunk = jest.fn();
@@ -72,7 +76,7 @@ describe('createCollect', function() {
 
       it(
         'should pass each of the items returned by getNextCallsArgs to each of ' +
-          'the calls to getChunk (except the first) as spread arguments',
+        'the calls to getChunk (except the first) as spread arguments',
         async function() {
           const getChunk = async (lower, upper) => lower + upper;
           const getNextCallsArgs = jest
@@ -88,8 +92,8 @@ describe('createCollect', function() {
 
       it(
         'should recurse: always call getNextCallsArgs after getting a chunk ' +
-          'and keep getting chunks as long as getNextCallsArgs returns a ' +
-          'non-empty array',
+        'and keep getting chunks as long as getNextCallsArgs returns a ' +
+        'non-empty array',
         async function() {
           const data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
           const maxChunkSize = 3;

@@ -5,12 +5,9 @@ export default ({ getChunk, getNextCallsArgs, reduce }) => {
     const chunk = await getChunk(...args);
     const nextCallsArgs = getNextCallsArgs(args, chunk);
     if (nextCallsArgs.length === 0) return chunk;
-    const nextChunks = [
-      chunk,
-      ...(await Promise.all(
-        nextCallsArgs.map(callArgs => collect(...callArgs))
-      ))
-    ];
-    return reduce(nextChunks);
+    const nextChunks = await Promise.all(
+      nextCallsArgs.map(callArgs => collect(...callArgs))
+    );
+    return reduce([chunk, ...nextChunks]);
   }
 };
