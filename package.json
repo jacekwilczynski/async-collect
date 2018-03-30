@@ -1,7 +1,7 @@
 {
-  "name": "collect",
+  "name": "async-collect",
   "version": "0.1.0",
-  "description": "Keep asynchronously getting chunks of data as long as the specified condition is met.",
+  "description": "Keep asynchronously getting chunks of data as long as a specified condition is met.",
   "main": "src/collect.js",
   "scripts": {
     "test": "jest src/collect.spec.js"
